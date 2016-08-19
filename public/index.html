@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>OASIS mud</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+		<link href="styles.css" rel="stylesheet" media="all" />
+	</head>
+	<body>
+		<div id="mudwrapper" class="container">
+			<div id="terminal">
+				<div id="mudopen" class="row">
+					<div class="col-md-12">
+						<h1 class="opening-title">The OASIS</h1>
+						<div class="subtext">
+							<p>
+								Created by <a href="http://sambolton.me">Sam Bolton (Anorak)</a> Based upon <a href="https://github.com/MoreOutput/RockMUD">RockMUD</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="inputwrapper" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form id="console" autocomplete="off">
+						<div class="form-group">
+							<input class="user-input form-control" id="cmd" type="input" value="" placeholder="Enter a character name"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="../socket.io/socket.io.js"></script>
+		<script src="rockmud-client.js"></script>
+	</body>
+</html>

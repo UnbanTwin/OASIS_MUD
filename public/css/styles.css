@@ -1,0 +1,177 @@
+/*
+red: #ff0033;
+green: #60f066;
+blue: #0066ff;
+yellow: #ffcc00;
+*/
+html, body {
+background-color: #000;
+color: #fff;
+font-size: .9em;
+padding: .5em;
+height: 100%;
+letter-spacing: 0.0650em;
+}
+html, body a {
+color: #60f066;
+}
+.sans-serif {
+font-family: sans-serif;
+}
+h1 {
+font-family: serif;
+padding-top: 0;
+margin-top: 0;
+font-size: 155%;
+color: #ffcc00;
+}
+h2, h3, h4, h5, h6, .title {
+color: #ddd;
+font-family: serif;
+padding-top: 0;
+margin-top: 0;
+font-size: 145%;
+}
+#mudwrapper.container {
+width: 100%;
+max-width: 1200px;
+padding-bottom: .5em;
+height: 90%;
+}
+.row {
+margin-bottom: .3em;
+}
+#terminal {
+background-color: #000;
+padding: 1em 1em 1em 1em;
+height: 100%;
+min-height:100%;
+overflow: auto;
+border: 1px solid #555;
+}
+#terminal .subtext {
+font-style: italic;
+}
+#terminal .row {
+width: 99%;
+}
+#inputwrapper {
+padding-top: 1em;
+width: 100%;
+max-width: 1200px;
+}
+.opening-title {
+font-size: 3em;
+text-shadow: 2px 2px #ff0033;
+color: #fff;
+}
+.score {
+margin-bottom: .25em;
+}
+.score h1, h4 {
+border-bottom: 1px dashed #eee;
+}
+.score h4 {
+text-shadow: none;
+border-bottom: 1px solid #000;
+}
+.score .score-level {
+color: #ff0033;
+}
+.score .saves li{
+list-style-type: square;
+}
+.score .stat-gold {
+color: #ffcc00;
+}
+#score .stat-hp {
+color: #ff0033;
+}
+.score .stat-mana {
+color: #0066ff;
+}
+.score .stat-mv {
+color: #60f066;
+}
+.cmd {
+color: #888;
+font-style: italic;
+}
+.cmd-get {
+color: #60f066;
+}
+.cmd-chat {
+color: #fff;
+}
+.cmd-chat .msg-name {
+color: #ffcc00;
+font-weight: bold;
+}
+.cmd-say {
+color: #fff;
+}
+.cmd-say .msg-name {
+font-weight: bold;
+color: #60f066;
+}
+.cmd-yell {
+color: #fff;
+}
+.cmd-yell .msg-name {
+font-weight: bold;
+color: purple;
+}
+.motd {
+border-top: 1px dashed #ffcc00;
+border-bottom: 1px dashed #ffcc00;
+color: #ff0033;
+padding: .8em 0 0 0;
+margin: .5em 0 1em 0;
+font-weight: bold;
+}
+.room .room-title {
+color: #ffcc00;
+}
+.room .room-exits {
+color: #ff0033;
+}
+.room-item {
+color: #eee;
+}
+.enter-name {
+font-weight: bold;
+}
+.logout-msg {
+font-weight: bold;
+color: #ff0033;
+}
+.error {
+color: #ff0033;
+}
+.table-no-border>thead>tr>th, 
+.table-no-border>tbody>tr>th, 
+.table-no-border>tfoot>tr>th, 
+.table-no-border>thead>tr>td, 
+.table-no-border>tbody>tr>td, 
+.table-no-border>tfoot>tr>td {
+border-top: none;
+}
+.red {
+color: #ff0033;
+}
+.green {
+color: #60f066;
+}
+.blue {
+color: #0066ff;
+}
+.yellow {
+color: #ffcc00;
+}
+.grey {
+color: #ddd;
+}
+.large {
+font-size: 1.5em;
+letter-spacing: 0em;
+}

@@ -1,7 +1,11 @@
-//TODO:MAKE INCIPIO, IN PROGEESS
-//TODO:Fix Radghar speaking randomly, temporal fix: comment out script.
-//TODO: Make mall.
+//TODO: MAKE INCIPIO, IN PROGEESS
+//TODO: Fix Radghar speaking randomly, temporal fix: comment out script.
+//TODO: Make mall. - DONE
 //TODO: Make other planets and link them to the teleporters.
+//TODO: Make payed teleportation. (For now just use rooms)
+//TODO: Await MoreOutputs reply about broken chest & body items.
+//TODO: Make Training NPCs in zone 4. (For each class.)
+//TODO: Make GreyHawk world for nubs to kill kobolds (Based of original DnD campaign)
 'use strict';
 var Cmd = require('../src/commands').cmd,
 Room = require('../src/rooms').room,
@@ -23,7 +27,7 @@ module.exports = {
 			id: '1',
 			title: 'Incipio Central',
 			area: 'Incipio',
-			content: 'A lush plaza. To the NORTH you can see a shopping malls and to the EAST you can see some teleporters. ',
+			content: 'A lush plaza. To the NORTH you can see a shopping malls, to the EAST you can see some teleporters and to the NORTH you can see some skill mentors.',
 			outdoors: true,
 			exits: [
 				{
@@ -34,6 +38,12 @@ module.exports = {
 				{
 					cmd: 'west',
 					id: '3',
+
+
+				},
+				{
+					cmd: 'north',
+					id: '4',
 
 
 				}
@@ -62,7 +72,7 @@ module.exports = {
 				hitRoll: 15,
 				ac: 20,
 				items: [],
-				trainer: true,
+				trainer: false,
 				behaviors: [{
 					module: 'HelpWizard'
 				}]
@@ -80,6 +90,11 @@ module.exports = {
 					cmd: 'west',
 					id: '1',
 
+				},
+				{//for tests (Wait till TP is in core.)
+					cmd: 'east',
+					id:'1',
+					area:'Greyhawk City'
 				}
 			],
 			monsters: []
@@ -197,8 +212,53 @@ module.exports = {
 						return true;
 					}
 				}
-			}
-		]
+			},{
+				id: '4',
+				title: 'Training grounds.',
+				area: 'Incipio',
+				content: 'The mentors here can help you train your skills. ',
+				outdoors: true,
+				exits: [
+					{
+						cmd: 'south',
+						id: '1',
+
+					}
+				],
+				monsters: [{
+					name: 'MageTrainer',
+					displayName: 'Mage Trainer',
+					charClass: 'mage',
+					level: 35,
+					short: 'Mage Trainer',
+					long: '<span class="yellow">Mage Trainer</span>, a old wise loooking wizard',
+					description: 'A old wise loooking wizard.',
+					inName: 'Mage Trainer',
+					race: 'elf',
+					id: 1001,
+					area: 'Incipio',
+					weight: 195,
+					diceNum: 3,
+					diceSides: 10,
+					diceMod: 5,
+					str: 20,
+					dex: 18,
+					position: 'standing',
+					attackType: 'punch',
+					damRoll: 20,
+					hitRoll: 15,
+					ac: 20,
+					items: [],
+					trainer: true,
+					behaviors: [/*{
+						module: 'HelpWizard'
+					}*/]
+				}
+
+			]
+		},
+
+	]
 	//}]
 
 }

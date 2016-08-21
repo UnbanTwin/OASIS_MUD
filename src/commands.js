@@ -20,13 +20,13 @@ areas = World.areas,
 Cmd = function () {};
 
 /*
-	command object = {
-		cmd: cmdArr[0].toLowerCase(), // {cast} spark boar
-		msg: cmdArr.slice(1).join(' '), // cast {spark boar}
-		arg: cmdArr[1].toLowerCase(), // cast {spark} boar
-		input: cmdArr.slice(2).join(' '), // cast spark {boar ...}
-		number: 1 // argument target -- cast spark 2.boar
-	};
+command object = {
+cmd: cmdArr[0].toLowerCase(), // {cast} spark boar
+msg: cmdArr.slice(1).join(' '), // cast {spark boar}
+arg: cmdArr[1].toLowerCase(), // cast {spark} boar
+input: cmdArr.slice(2).join(' '), // cast spark {boar ...}
+number: 1 // argument target -- cast spark 2.boar
+};
 */
 Cmd.prototype.createCommandObject = function(resFromClient) {
 	var cmdArr = resFromClient.msg.split(' '),
@@ -46,7 +46,7 @@ Cmd.prototype.createCommandObject = function(resFromClient) {
 		};
 
 		if (cmdObj.input && !isNaN(parseInt(cmdObj.input[0]))
-			|| (!cmdObj.input && !isNaN(parseInt(cmdObj.msg[0]))) ) {
+		|| (!cmdObj.input && !isNaN(parseInt(cmdObj.msg[0]))) ) {
 
 			if (!cmdObj.input) {
 				cmdObj.number = parseInt(cmdObj.msg[0]);
@@ -69,9 +69,9 @@ Cmd.prototype.buy = function(target, command) {
 	merchant;
 
 	if (command.roomObj) {
-		 roomObj = command.roomObj;
+		roomObj = command.roomObj;
 	} else {
-		 roomObj = World.getRoomObject(target.area, target.roomid);
+		roomObj = World.getRoomObject(target.area, target.roomid);
 	}
 
 	if (target.position !== 'sleeping') {
@@ -189,7 +189,7 @@ Cmd.prototype.list = function(target, command) {
 				if (merchant.items.length > 0) {
 					for (i; i < merchant.items.length; i += 1) {
 						storeDisplay += '<li>' + merchant.items[i].name  +
-							' <span class="yellow">(' + merchant.items[i].worth + 'gp)</span></li>';
+						' <span class="yellow">(' + merchant.items[i].worth + 'gp)</span></li>';
 					}
 
 					World.msgPlayer(target, {
@@ -485,8 +485,8 @@ Cmd.prototype.open = function(target, command, fn) {
 	exitObj;
 
 	if (target.position === 'standing'
-		|| target.position === 'resting'
-		|| target.position === 'fighting') {
+	|| target.position === 'resting'
+	|| target.position === 'fighting') {
 		roomObj = World.getRoomObject(target.area, target.roomid);
 
 		exitObj = Room.getExit(roomObj, command.arg);
@@ -502,8 +502,8 @@ Cmd.prototype.open = function(target, command, fn) {
 
 				World.msgPlayer(target, {
 					msg: 'You open a '
-						+ exitObj.door.name + ' ' + exitObj.cmd
-						+ ' from here.',
+					+ exitObj.door.name + ' ' + exitObj.cmd
+					+ ' from here.',
 					styleClass: 'cmd-wake'
 				});
 
@@ -540,8 +540,8 @@ Cmd.prototype.close = function(target, command, fn) {
 	exitObj;
 
 	if (target.position === 'standing'
-		|| target.position === 'resting'
-		|| target.position === 'fighting') {
+	|| target.position === 'resting'
+	|| target.position === 'fighting') {
 		roomObj = World.getRoomObject(target.area, target.roomid);
 
 		exitObj = Room.getExit(roomObj, command.arg);
@@ -596,8 +596,8 @@ Cmd.prototype.unlock = function(target, command) {
 
 	if (command.msg) {
 		if (target.position === 'standing'
-			|| target.position === 'resting'
-			|| target.position === 'fighting') {
+		|| target.position === 'resting'
+		|| target.position === 'fighting') {
 
 			roomObj = World.getRoomObject(target.area, target.roomid);
 
@@ -640,8 +640,8 @@ Cmd.prototype.lock = function(target, command, fn) {
 
 	if (command.msg) {
 		if (target.position === 'standing'
-			|| target.position === 'resting'
-			|| target.position === 'fighting') {
+		|| target.position === 'resting'
+		|| target.position === 'fighting') {
 
 			roomObj = World.getRoomObject(target.area, target.roomid);
 			exitObj = Room.getExit(roomObj, command.arg);
@@ -717,9 +717,9 @@ Cmd.prototype.move = function(target, command, fn) {
 	};
 
 	if (target.position === 'standing'
-		|| target.position === 'fleeing'
-		&& target.cmv > (4 - dexMod)
-		&& target.wait === 0) {
+	|| target.position === 'fleeing'
+	&& target.cmv > (4 - dexMod)
+	&& target.wait === 0) {
 
 		if (!command.roomObj) {
 			roomObj = World.getRoomObject(target.area, target.roomid);
@@ -782,29 +782,29 @@ Cmd.prototype.move = function(target, command, fn) {
 									if (!target.inName) {
 										if (target.long) {
 											msg = '<strong>' + target.long
-												+ '</strong> walks in from '
-												+ parseMovementMsg(exitObj) + '.';
+											+ '</strong> walks in from '
+											+ parseMovementMsg(exitObj) + '.';
 										} else {
 											msg = '<strong>' + target.displayName
-												+ '</strong> walks in from '
-												+ parseMovementMsg(exitObj) + '.';
+											+ '</strong> walks in from '
+											+ parseMovementMsg(exitObj) + '.';
 										}
 									} else if (target.inName && !target.inMessage) {
 										msg = '<strong>' + target.inName
-											+ '</strong> enters from '
-											+ parseMovementMsg(exitObj) + '.';
+										+ '</strong> enters from '
+										+ parseMovementMsg(exitObj) + '.';
 									} else {
 										msg = '<strong>' + target.inName
-											+ '</strong> ' + target.inMessage  + ' '
-											+ parseMovementMsg(exitObj) + '.';
+										+ '</strong> ' + target.inMessage  + ' '
+										+ parseMovementMsg(exitObj) + '.';
 									}
 								} else if (receiver.hearing) {
 									if (World.dice.roll(1, 2) === 1) {
 										msg = '<strong>Something</strong> enters from '
-											+ parseMovementMsg(exitObj) + '.';
+										+ parseMovementMsg(exitObj) + '.';
 									} else {
 										msg = '<strong>Something</strong> comes in from '
-											+ parseMovementMsg(exitObj) + '.';
+										+ parseMovementMsg(exitObj) + '.';
 									}
 								}
 							}
@@ -911,23 +911,23 @@ Cmd.prototype.who = function(target, command) {
 			}
 
 			str += '<tr>' +
-				'<td class="who-lvl yellow">' + player.level + '</td>' +
-				'<td class="who-race green">' + player.race + '</td>' +
-				'<td class="who-class red">' + player.charClass + '</td>' +
-				'<td class="who-player">' + displayName + '</td>' +
+			'<td class="who-lvl yellow">' + player.level + '</td>' +
+			'<td class="who-race green">' + player.race + '</td>' +
+			'<td class="who-class red">' + player.charClass + '</td>' +
+			'<td class="who-player">' + displayName + '</td>' +
 			'</tr>';
 		}
 
 		str = '<div class="cmd-who"><h2>Visible Players</h2>' +
-			'<table class="table table-condensed table-no-border who-list">' +
-			'<thead>' +
-				'<tr>' +
-					'<td width="5%">Level</td>' +
-					'<td width="5%">Race</td>' +
-					'<td width="5%">Class</td>' +
-					'<td width="85%">Name</td>' +
-				'</tr>' +
-			'</thead><tbody>' + str + '</tbody>' +
+		'<table class="table table-condensed table-no-border who-list">' +
+		'<thead>' +
+		'<tr>' +
+		'<td width="5%">Level</td>' +
+		'<td width="5%">Race</td>' +
+		'<td width="5%">Class</td>' +
+		'<td width="85%">Name</td>' +
+		'</tr>' +
+		'</thead><tbody>' + str + '</tbody>' +
 		'</table></div>';
 
 		World.msgPlayer(target, {
@@ -1021,8 +1021,8 @@ Cmd.prototype.get = function(target, command, fn) {
 					Character.addItem(target, item);
 
 					World.msgPlayer(target, {msg: 'You remove a <strong>'
-						+ item.displayName + '</strong> from a '
-						+ container.displayName + '.', styleClass: 'green'});
+					+ item.displayName + '</strong> from a '
+					+ container.displayName + '.', styleClass: 'green'});
 				} else {
 					World.msgPlayer(target, {
 						msg: 'You don\'t see that in there.',
@@ -1346,13 +1346,13 @@ Cmd.prototype.kill = function(player, command, roomObj, fn) {
 		if (opponent && opponent.roomid === player.roomid) {
 			World.msgPlayer(player, {
 				msg: '<strong class="grey">You scream and charge at a '
-					+ opponent.name + '!</strong>',
+				+ opponent.name + '!</strong>',
 				noPrompt: true
 			});
 
 			World.msgPlayer(opponent, {
 				msg: '<strong class="red">A ' + player.displayName
-					+ ' screams and charges at you!</strong>',
+				+ ' screams and charges at you!</strong>',
 				noPrompt: true
 			});
 
@@ -1369,7 +1369,7 @@ Cmd.prototype.kill = function(player, command, roomObj, fn) {
 
 				World.msgPlayer(opponent, {
 					msg: '<strong class="red">A ' + player.displayName
-						+ ' screams and charges at you!</strong>',
+					+ ' screams and charges at you!</strong>',
 					noPrompt: true
 				});
 
@@ -1392,10 +1392,28 @@ Cmd.prototype.kill = function(player, command, roomObj, fn) {
 Cmd.prototype.worth = function(target, command) {
 	World.msgPlayer(target, {
 		msg: 'You have ' + target.gold + ' ' + World.config.coinage,
-		styleClass: 'gold'
+		styleClass: 'green'
 	});
 };
+Cmd.prototype.teleport = function(target, command,fn) {
+	if(World.getAreaByName(command.arg)) {
+		target.area = command.arg;
+		target.roomid = '1';
+		target.gold -= 30;
+		World.msgPlayer(target, {
+			msg: 'You have been teleported to ' + command.arg + '. 30 credit(s) have be subtracted from your account.',
+			styleClass: 'green'
+		});
 
+		Cmd.prototype.look(target,target.roomid);
+
+	}else {
+		World.msgPlayer(target, {
+			msg: command.arg + ' is not a valid location!',
+			styleClass: 'green'
+		});
+	};
+};
 Cmd.prototype.look = function(target, command) {
 	var roomObj,
 	displayHTML,
@@ -1436,7 +1454,11 @@ Cmd.prototype.look = function(target, command) {
 				item = Character.getItem(target, command);
 
 				if (item) {
-					itemDescription = '<p>' + item.long + '</p>';
+					if (item.description) {
+						itemDescription = item.description;
+					} else {
+						itemDescription = item.short;
+					}
 
 					if (item.items) {
 						itemDescription += '<p>Inside you can see:</p><ul class="list container-list">'
@@ -1456,8 +1478,10 @@ Cmd.prototype.look = function(target, command) {
 					monster = Room.getMonster(roomObj, command);
 
 					if (monster) {
-						if (!monster.long) {
-							itemDescription = monster.short;
+						if (monster.description) {
+							itemDescription = monster.description;
+						} else if (monster.long) {
+							itemDescription = monster.long + ' is ' + monster.position + ' ' + ' here.';
 						}
 
 						World.msgPlayer(target, {
@@ -1465,19 +1489,10 @@ Cmd.prototype.look = function(target, command) {
 							styleClass: 'cmd-look'
 						});
 					} else {
-						item = Room.getItem(target, command);
-
-						if (item) {
-							return World.msgPlayer(target, {
-								msg: item.long,
-								styleClass: 'cmd-look'
-							});
-						} else {
-							return World.msgPlayer(target, {
-								msg: 'You do not see that here.',
-								styleClass: 'error'
-							});
-						}
+						World.msgPlayer(target, {
+							msg: 'You do not see that here.',
+							styleClass: 'error'
+						});
 					}
 				}
 			}
@@ -1507,7 +1522,7 @@ Cmd.prototype.where = function(target, command) {
 	} else {
 		for (i; i < players.length; i += 1) {
 			msgObj.msg += '<li>Name: ' + target.displayName + '</li>'
-				+ '<li>Current Area: ' + target.area + '</li>';
+			+ '<li>Current Area: ' + target.area + '</li>';
 		}
 	}
 
@@ -1609,7 +1624,7 @@ Cmd.prototype.chat = function(target, command) {
 	} else {
 		World.msgPlayer(target, {
 			msg: 'To send a message to everyone on the game use <strong>chat [message]</strong>. '
-				+ 'To learn more about communication try <strong>help communication</strong>',
+			+ 'To learn more about communication try <strong>help communication</strong>',
 			styleClass: 'error'
 		});
 	}
@@ -1697,7 +1712,7 @@ Cmd.prototype.time = function(target, command) {
 	}
 
 	timeStr = 'Todays date: ' + World.time.month.id + '/' + World.time.day + '/'
-		+ World.time.year + ' (' + hr + ':' + min + '), the ' + World.time.title;
+	+ World.time.year + ' (' + hr + ':' + min + '), the ' + World.time.title;
 
 	if (World.time.isDay) {
 		timeStr += ' (Day)';
@@ -1747,7 +1762,7 @@ Cmd.prototype.quit = function(target, command) {
 
 /** Related to Saving and character adjustment/interaction **/
 Cmd.prototype.train = function(target, command) {
- 	var roomObj = World.getRoomObject(target.area, target.roomid),
+	var roomObj = World.getRoomObject(target.area, target.roomid),
 	trainDisplay = '',
 	stat,
 	i = 0,
@@ -1812,21 +1827,21 @@ Cmd.prototype.train = function(target, command) {
 
 									World.msgPlayer(target, {
 										msg: 'You train with ' + trainer.displayName
-											+ '. (<strong>' + World.capitalizeFirstLetter(stat)
-											+ ' +1 for ' + cost +  ' trains</strong>)',
+										+ '. (<strong>' + World.capitalizeFirstLetter(stat)
+										+ ' +1 for ' + cost +  ' trains</strong>)',
 										styleClass: 'green'
 									});
 								} else {
 									World.msgPlayer(target, {
 										msg: 'You don\'t have enough trains to work with '
-											+ trainer.displayName + '.',
+										+ trainer.displayName + '.',
 										styleClass: 'error'
 									});
 								}
 							} else {
 								World.msgPlayer(target, {
 									msg: 'You already know much more than ' + trainer.displayName
-										+ '. You should find someone stronger to train with.',
+									+ '. You should find someone stronger to train with.',
 									styleClass: 'error'
 								});
 							}
@@ -1839,12 +1854,12 @@ Cmd.prototype.train = function(target, command) {
 					}
 				} else {
 					trainDisplay = '<p>You can train the follow stats with ' + trainer.displayName
-						+ '. <strong>You currently have ' + target.trains
-						+ ' Trains to spend</strong>.</p><table class="table table-condensed train-table">'
-						+ '<thead><tr><td class="train-name-header yellow"><strong>Stat</strong></td>'
-						+ '<td class="train-cost-header yellow"><strong>Current Value</strong></td>'
-						+ '<td class="train-cost-header yellow"><strong>Cost</strong></td>'
-						+ '</tr></thead><tbody>';
+					+ '. <strong>You currently have ' + target.trains
+					+ ' Trains to spend</strong>.</p><table class="table table-condensed train-table">'
+					+ '<thead><tr><td class="train-name-header yellow"><strong>Stat</strong></td>'
+					+ '<td class="train-cost-header yellow"><strong>Current Value</strong></td>'
+					+ '<td class="train-cost-header yellow"><strong>Cost</strong></td>'
+					+ '</tr></thead><tbody>';
 
 					for (i; i < stats.length; i += 1) {
 						if (target['base' + World.capitalizeFirstLetter(stats[i].id)] < 12) {
@@ -1935,13 +1950,13 @@ Cmd.prototype.practice = function(target, command) {
 					if (trainer.long) {
 						World.msgPlayer(target, {
 							msg: trainer.long + ' trains you in the art of ' +
-								skillObj.display + '.',
+							skillObj.display + '.',
 							styleClass: 'green'
 						});
 					} else {
 						World.msgPlayer(target, {
 							msg: trainer.displayName + ' trains you in the art of '
-								+ skillObj.display + '.',
+							+ skillObj.display + '.',
 							styleClass: 'green'
 						});
 					}
@@ -1954,7 +1969,7 @@ Cmd.prototype.practice = function(target, command) {
 
 				World.msgRoom(roomObj, {
 					msg: trainer.long + ' trains ' + target.displayName  + ' in the art of ' +
-						skillObj.display + '.',
+					skillObj.display + '.',
 					styleClass: 'green',
 					playerName: target.name
 				});
@@ -1970,7 +1985,7 @@ Cmd.prototype.practice = function(target, command) {
 			}
 		}
 	},
- 	roomObj = World.getRoomObject(target.area, target.roomid),
+	roomObj = World.getRoomObject(target.area, target.roomid),
 	trainers = Room.getTrainers(roomObj, command),
 	trainer,
 	trainerSkillObj,
@@ -2001,7 +2016,7 @@ Cmd.prototype.practice = function(target, command) {
 							pracSkill();
 						} else {
 							if (skillObj) {
-								if (Character.meetsSkillPrepreqs(target, skillObj)) {
+								if (trainerSkillObj && Character.meetsSkillPrepreqs(target, skillObj)) {
 									pracSkill();
 								} else {
 									this.say(trainer, {
@@ -2013,7 +2028,7 @@ Cmd.prototype.practice = function(target, command) {
 							} else {
 								World.msgPlayer(target, {
 									msg: 'You don\'t know how to ' + command.arg
-										+ '. If you want to increase a stat use the train command.',
+									+ '. If you want to increase a stat use the train command.',
 									styleClass: 'error'
 								});
 							}
@@ -2021,11 +2036,11 @@ Cmd.prototype.practice = function(target, command) {
 					}
 				} else {
 					practiceDisplay = '<p>The table below showcases the <strong>skills currently known by '
-						+ trainer.displayName + '</strong></p><table class="table table-condensed prac-table">'
-						+ '<thead><tr><td class="prac-name-header yellow"><strong>'
-						+ trainer.displayName +  ' Skills</strong></td>'
-						+ '<td class="prac-max-header yellow"><strong>Status</strong></td>'
-						+ '</tr></thead><tbody>';
+					+ trainer.displayName + '</strong></p><table class="table table-condensed prac-table">'
+					+ '<thead><tr><td class="prac-name-header yellow"><strong>'
+					+ trainer.displayName +  ' Skills</strong></td>'
+					+ '<td class="prac-max-header yellow"><strong>Status</strong></td>'
+					+ '</tr></thead><tbody>';
 
 					for (i; i < trainer.skills.length; i += 1) {
 						if (trainer.skills[i].prerequisites.level <= trainer.level) {
@@ -2053,9 +2068,9 @@ Cmd.prototype.practice = function(target, command) {
 
 					World.msgPlayer(target, {
 						msg: practiceDisplay + '</tbody></table><p class="red"><strong>'
-							+ 'To practice a skill you must have it on your'
-							+ ' skill list and any required prerequisites. Review help skills '
-							+ 'for general skill system information.</strong></p>'
+						+ 'To practice a skill you must have it on your'
+						+ ' skill list and any required prerequisites. Review help skills '
+						+ 'for general skill system information.</strong></p>'
 					});
 				}
 			} else {
@@ -2142,7 +2157,7 @@ Cmd.prototype.equipment = function(target, command) {
 		}
 
 		eqStr += '<li class="eq-slot-' + target.eq[i].slot.replace(/ /g, '') +
-			'"><label>' + target.eq[i].name + '</label>: ';
+		'"><label>' + target.eq[i].name + '</label>: ';
 
 		if (!item || target.eq[i].item === '') {
 			eqStr += ' Nothing</li>';
@@ -2152,10 +2167,10 @@ Cmd.prototype.equipment = function(target, command) {
 			} else {
 				if (item.lightDecay > 0) {
 					eqStr += '<label class="yellow">' + item.displayName
-						+ ' (<span class="red">Providing light</span>)</label></li>';
+					+ ' (<span class="red">Providing light</span>)</label></li>';
 				} else {
 					eqStr += '<label class="yellow">' + item.displayName
-						+ ' (<span class="red">Not providing light</span>)</label></li>';
+					+ ' (<span class="red">Not providing light</span>)</label></li>';
 				}
 			}
 		}
@@ -2163,7 +2178,7 @@ Cmd.prototype.equipment = function(target, command) {
 
 	World.msgPlayer(target, {
 		msg: '<div class="eq-cmd"><h1>You are wearing:</h1>' +
-			'<ul class="list-unstyled equipment-list">' +
+		'<ul class="list-unstyled equipment-list">' +
 		eqStr + '</ul></div>',
 		styleClass: 'cmd-eq'
 	});
@@ -2195,7 +2210,7 @@ Cmd.prototype.skills = function(target, command) {
 			}
 
 			skills += '<li><strong>' + skillObj.display + '</strong> ' + learnedStatus  + ' ' +  skillObj.type
-				+ ' skill at  level ' + skillLevel + '.';
+			+ ' skill at  level ' + skillLevel + '.';
 
 			if (trainedLevel) {
 				skills += trainedLevel;
@@ -2269,11 +2284,11 @@ Cmd.prototype.inventory = function(player, command) {
 	i = 0;
 
 	iStr += '<table class="table table-condensed table-no-border i-table"><thead><tr>' +
-		'<td class="i-name-header">Item Name</td>' +
-		'<td class="i-equipped-header green">Equipped</td>' +
-		'<td class="i-type-header">Type</td>' +
-		'<td class="i-weight-header">Weight</td>' +
-		'</tr></thead><tbody>';
+	'<td class="i-name-header">Item Name</td>' +
+	'<td class="i-equipped-header green">Equipped</td>' +
+	'<td class="i-type-header">Type</td>' +
+	'<td class="i-weight-header">Weight</td>' +
+	'</tr></thead><tbody>';
 
 	if (player.items.length > 0) {
 		iStr += '<tr>';
@@ -2288,18 +2303,18 @@ Cmd.prototype.inventory = function(player, command) {
 			}
 
 			iStr += '<td class="i-type">' + player.items[i].itemType + '</td>'
-				+ '<td class="i-weight">' + player.items[i].weight + '</td></tr>';
+			+ '<td class="i-weight">' + player.items[i].weight + '</td></tr>';
 		}
 
 		if (player.level <= 2) {
 			iStr = '<p><strong class="red">NEWBIE TIP:</strong> You can see the items below on your person. '
-				+ 'Type <strong>eq</strong> or <strong>equipment</strong> to see worn equipment and empty slots.</p>'
-				+ iStr;
+			+ 'Type <strong>eq</strong> or <strong>equipment</strong> to see worn equipment and empty slots.</p>'
+			+ iStr;
 		}
 
 		World.msgPlayer(player, {
 			msg: '<h1>Your Inventory</h1>'
-				+ iStr + '</tbody></table>'
+			+ iStr + '</tbody></table>'
 		});
 	} else {
 		World.msgPlayer(player, {
@@ -2310,58 +2325,58 @@ Cmd.prototype.inventory = function(player, command) {
 
 Cmd.prototype.score = function(target, command) {
 	var score = '<div class="row score"><div class="col-md-12"><h1>' +
-		'<span class="score-name">' + target.displayName + '</span> ' +
-		'<span class="score-title">' + target.title + '</span> ' +
-		'<span class="score-level"> (' + target.level + ')</span></h1></div>' +
-		'<div class="stats">' +
-			'<div class="col-md-12">' +
-				'<div class="row">' +
-				'<ul class="col-md-12 score-info list-inline">' +
-					'<li class="stat-hp first"><label>HP:</label> <strong>' +  target.chp + '</strong>/' + target.hp + ' </li>' +
-					'<li class="stat-mana"><label>Mana:</label> <strong>' + target.cmana + '</strong>/' + target.mana + '</li>' +
-					'<li class="stat-mv"><label>Moves:</label> <strong>' + target.cmv + '</strong>/' + target.mv + '</li>' +
-					'<li class="stat-levl"><label>Level:</label> ' +  target.level + '</li>' +
-				'</ul>' +
-				'<ul class="col-md-2 score-stats list-unstyled">' +
-					'<li class="stat-str first"><label>STR:</label> ' + target.baseStr + ' <strong>(' + target.str + ')</strong></li>' +
-					'<li class="stat-wis"><label>WIS:</label> ' + target.baseWis + ' <strong>(' + target.wis + ')</strong></li>' +
-					'<li class="stat-int"><label>INT:</label> ' + target.baseInt + ' <strong>(' + target.int + ')</strong></li>' +
-					'<li class="stat-dex"><label>DEX:</label> ' + target.baseDex + ' <strong>(' + target.dex + ')</strong></li>' +
-					'<li class="stat-con"><label>CON:</label> ' + target.baseCon + ' <strong>(' + target.con + ')</strong></li>' +
-				'</ul>' +
-				'<ul class="col-md-2 score-stats list-unstyled">' +
-					'<li class="stat-armor"><label>Armor:</label> ' + target.ac + '</li>' +
-					'<li class="stat-hunger"><label>Hunger:</label> ' + target.hunger +'</li>' +
-					'<li class="stat-thirst"><label>Thirst:</label> ' + target.thirst +'</li>' +
-					'<li class="stat-trains last"><label>Trains:</label> ' + target.trains + '</li>' +
-				'</ul>' +
-				'<div class="stat-details">' +
-					'<ul class="col-md-3 score-stats list-unstyled">' +
-						'<li class="stat-hitroll"><label>Hit Bonus: </labels> ' + target.hitRoll + '</li>' +
-						'<li class="stat-damroll"><label>Damage Bonus: </label> ' + target.damRoll + '</li>' +
-						'<li class="stat-magicRes"><label>Magic resistance: </label> ' + target.magicRes + '</li>' +
-						'<li class="stat-meleeRes"><label>Melee resistance: </label> ' + target.meleeRes + '</li>' +
-						'<li class="stat-poisonRes"><label>Poison resistance: </label> ' + target.poisonRes + '</li>' +
-						'<li class="stat-detection"><label>Detection: </label> ' + target.detection + '</li>' +
-						'<li class="stat-knowlege"><label>Knowledge: </label> ' + target.knowledge + '</li>' +
-					'</ul>' +
-					'<div class="col-md-3 score-affects">' +
-						'<h6 class="sans-serif">Affected by:</h6>' +
-						'<p>You don\'t feel affected by anything.</p>' +
-					'</div>' +
-				'</div>' +
-				'<ul class="col-md-12 list-unstyled">' +
-					'<li class="stat-position">You are currently <span class="green">' + target.position + '</span></li>' +
-					'<li class="stat-level">You are a level ' + target.level + ' ' + target.sex + ' ' + target.race + ' '
-						+ target.charClass + ' of ' + target.size.display + ' size with '
-						+ '<span class="yellow">' + target.gold + ' ' + World.config.coinage  + '</span>.</li>' +
-					'<li class="stat-carry">You are carrying ' + target.weight + '/' + target.maxWeight + ' pounds.</li>' +
-					'<li class="stat-xp">You need <strong>' + (target.expToLevel - target.exp)
-						+ '</strong> experience for your next level.</li>' +
-					'<li class="stat-killcnt last">You have won ' + target.killed + ' battles.</li>' +
-				'</ul>' +
-			'</div>'
-		'</div></div>';
+	'<span class="score-name">' + target.displayName + '</span> ' +
+	'<span class="score-title">' + target.title + '</span> ' +
+	'<span class="score-level"> (' + target.level + ')</span></h1></div>' +
+	'<div class="stats">' +
+	'<div class="col-md-12">' +
+	'<div class="row">' +
+	'<ul class="col-md-12 score-info list-inline">' +
+	'<li class="stat-hp first"><label>HP:</label> <strong>' +  target.chp + '</strong>/' + target.hp + ' </li>' +
+	'<li class="stat-mana"><label>Mana:</label> <strong>' + target.cmana + '</strong>/' + target.mana + '</li>' +
+	'<li class="stat-mv"><label>Moves:</label> <strong>' + target.cmv + '</strong>/' + target.mv + '</li>' +
+	'<li class="stat-levl"><label>Level:</label> ' +  target.level + '</li>' +
+	'</ul>' +
+	'<ul class="col-md-2 score-stats list-unstyled">' +
+	'<li class="stat-str first"><label>STR:</label> ' + target.baseStr + ' <strong>(' + target.str + ')</strong></li>' +
+	'<li class="stat-wis"><label>WIS:</label> ' + target.baseWis + ' <strong>(' + target.wis + ')</strong></li>' +
+	'<li class="stat-int"><label>INT:</label> ' + target.baseInt + ' <strong>(' + target.int + ')</strong></li>' +
+	'<li class="stat-dex"><label>DEX:</label> ' + target.baseDex + ' <strong>(' + target.dex + ')</strong></li>' +
+	'<li class="stat-con"><label>CON:</label> ' + target.baseCon + ' <strong>(' + target.con + ')</strong></li>' +
+	'</ul>' +
+	'<ul class="col-md-2 score-stats list-unstyled">' +
+	'<li class="stat-armor"><label>Armor:</label> ' + target.ac + '</li>' +
+	'<li class="stat-hunger"><label>Hunger:</label> ' + target.hunger +'</li>' +
+	'<li class="stat-thirst"><label>Thirst:</label> ' + target.thirst +'</li>' +
+	'<li class="stat-trains last"><label>Trains:</label> ' + target.trains + '</li>' +
+	'</ul>' +
+	'<div class="stat-details">' +
+	'<ul class="col-md-3 score-stats list-unstyled">' +
+	'<li class="stat-hitroll"><label>Hit Bonus: </labels> ' + target.hitRoll + '</li>' +
+	'<li class="stat-damroll"><label>Damage Bonus: </label> ' + target.damRoll + '</li>' +
+	'<li class="stat-magicRes"><label>Magic resistance: </label> ' + target.magicRes + '</li>' +
+	'<li class="stat-meleeRes"><label>Melee resistance: </label> ' + target.meleeRes + '</li>' +
+	'<li class="stat-poisonRes"><label>Poison resistance: </label> ' + target.poisonRes + '</li>' +
+	'<li class="stat-detection"><label>Detection: </label> ' + target.detection + '</li>' +
+	'<li class="stat-knowlege"><label>Knowledge: </label> ' + target.knowledge + '</li>' +
+	'</ul>' +
+	'<div class="col-md-3 score-affects">' +
+	'<h6 class="sans-serif">Affected by:</h6>' +
+	'<p>You don\'t feel affected by anything.</p>' +
+	'</div>' +
+	'</div>' +
+	'<ul class="col-md-12 list-unstyled">' +
+	'<li class="stat-position">You are currently <span class="green">' + target.position + '</span></li>' +
+	'<li class="stat-level">You are a level ' + target.level + ' ' + target.sex + ' ' + target.race + ' '
+	+ target.charClass + ' of ' + target.size.display + ' size with '
+	+ '<span class="yellow">' + target.gold + ' ' + World.config.coinage  + '</span>.</li>' +
+	'<li class="stat-carry">You are carrying ' + target.weight + '/' + target.maxWeight + ' pounds.</li>' +
+	'<li class="stat-xp">You need <strong>' + (target.expToLevel - target.exp)
+	+ '</strong> experience for your next level.</li>' +
+	'<li class="stat-killcnt last">You have won ' + target.killed + ' battles.</li>' +
+	'</ul>' +
+	'</div>'
+	'</div></div>';
 
 	World.msgPlayer(target, {
 		msg: score
@@ -2420,20 +2435,20 @@ Cmd.prototype.json = function(target, command) {
 						World.msgPlayer(target, {msg: util.inspect(item, {depth: null})});
 					} else {
 						Room.checkMonster(r, s, function (fnd, monster) {
-								if (fnd) {
-									World.msgPlayer(target, {msg: util.inspect(monster, {depth: null})});
-								} else {
-									World.msgPlayer(target, {msg: 'Target not found.', styleClass: 'error' });
-								}
+							if (fnd) {
+								World.msgPlayer(target, {msg: util.inspect(monster, {depth: null})});
+							} else {
+								World.msgPlayer(target, {msg: 'Target not found.', styleClass: 'error' });
 							}
-						);
-					}
-				});
-			}
-		});
-	} else {
-		World.msgPlayer(target, {msg: 'Jason who?', styleClass: 'error' });
-	}
+						}
+					);
+				}
+			});
+		}
+	});
+} else {
+	World.msgPlayer(target, {msg: 'Jason who?', styleClass: 'error' });
+}
 };
 
 /*

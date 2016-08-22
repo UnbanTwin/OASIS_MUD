@@ -8,7 +8,7 @@ World = require('../src/world').world;
 */
 module.exports = {
 	exclimations: [
-		'Use the teleporters to go to other planets.',
+		'Use the teleport command to go to other planets.',
 		'Go to the mall to buy equipment.'
 
 	],

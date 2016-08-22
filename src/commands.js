@@ -1395,18 +1395,31 @@ Cmd.prototype.worth = function(target, command) {
 		styleClass: 'green'
 	});
 };
+//For tranferring money from player to player, await MoreOutputs reply.
+/*Cmd.prototype.transfer = function(target, command, fn) {
+
+	World.msgPlayer(target, {
+		msg: 'You have ' + target.gold + ' ' + World.config.coinage,
+		styleClass: 'green'
+	});
+};*/
 Cmd.prototype.teleport = function(target, command,fn) {
-	if(World.getAreaByName(command.arg)) {
+	if(World.getAreaByName(command.arg) && target.gold >= 30) {
 		target.area = command.arg;
 		target.roomid = '1';
 		target.gold -= 30;
 		World.msgPlayer(target, {
-			msg: 'You have been teleported to ' + command.arg + '. 30 credit(s) have be subtracted from your account.',
+			msg: 'You have been teleported to ' + command.arg + '. 30 credit(s) have been subtracted from your account.',
 			styleClass: 'green'
 		});
 
 		Cmd.prototype.look(target,target.roomid);
 
+	}else if(World.getAreaByName(command.arg) && target.gold <= 30){
+		World.msgPlayer(target, {
+			msg: 'You do not have enough credit(s) to teleport, you need 30!',
+			styleClass: 'green'
+		});
 	}else {
 		World.msgPlayer(target, {
 			msg: command.arg + ' is not a valid location!',

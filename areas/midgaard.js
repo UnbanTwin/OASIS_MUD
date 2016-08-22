@@ -5,7 +5,7 @@ World = require('../src/world').world;
 
 module.exports = {
 	name: 'Midgaard',
-	id: '101',
+	id: '10000000',
 	type: 'city',
 	levels: 'All',
 	description: 'The first city.',

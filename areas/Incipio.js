@@ -1,4 +1,4 @@
-//TODO: MAKE INCIPIO, IN PROGEESS
+//TODO: MAKE INCIPIO, IN PROGEESS - world building done.
 //TODO: Fix Radghar speaking randomly, temporal fix: comment out script.
 //TODO: Make mall. - DONE
 //TODO: Make other planets and link them to the teleporters.
@@ -83,18 +83,13 @@ module.exports = {
 			id: '2',
 			title: 'Incipio Teleporters',
 			area: 'Incipio',
-			content: 'A line of brass teleporters. SELECT a destination. ',
+			content: 'A line of brass teleporters. Type TELEPORT DESTINATION to be transported to where you want go! ',
 			outdoors: true,
 			exits: [
 				{
 					cmd: 'west',
 					id: '1',
 
-				},
-				{//for tests (Wait till TP is in core.)
-					cmd: 'east',
-					id:'1',
-					area:'Greyhawk City'
 				}
 			],
 			monsters: []

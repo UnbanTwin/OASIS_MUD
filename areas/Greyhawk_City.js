@@ -5,7 +5,7 @@ Room = require('../src/rooms').room,
 World = require('../src/world').world;
 
 module.exports = {
-	name: 'Greyhawk City',
+	name: 'Greyhawk_City',
 	id: '4',
 	type: 'outside',
 	levels: 'All',
@@ -19,7 +19,7 @@ module.exports = {
 	rooms: [
 		{
 			id: '1',
-			title: 'Greyhawk main square',
+			title: 'Greyhawk City main square',
 			area: 'Greyhawk City',
 			content: 'A busy hustling market square.',
 			outdoors: true,
@@ -41,7 +41,7 @@ module.exports = {
 				inName: 'InfoBroker',
 				race: 'human',
 				id: 10005,
-				area: 'Incipio',
+				area: 'Greyhawk_City',
 				weight: 195,
 				diceNum: 3,
 				diceSides: 10,
@@ -59,7 +59,36 @@ module.exports = {
 					module: 'radghar'
 				}*/]
 			}],
-			items : []
+			items : [
+				{
+					name: 'Torch',
+					short: 'a wooden torch',
+					long: 'A wooden torch rests on the ground' ,
+					area: 'Midgaard',
+					id: '104',
+					level: 1,
+					itemType: 'weapon',
+					material: 'wood',
+					weaponType: 'club',
+					diceNum: 1,
+					diceSides: 2,
+					diceMod: -1,
+					attackType: 'smash',
+					ac: -1,
+					weight: 1,
+					slot: 'hands',
+					equipped: false,
+					light: true,
+					lightDecay: 10,
+					flickerMsg: '',
+					extinguishMsg: '',
+					spawn: 3,
+					flags: [],
+					beforeDrop: function(item, roomObj) {
+						return true;
+					}
+				}
+			]
 		}
 	]
 };

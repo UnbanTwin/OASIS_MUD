@@ -1,4 +1,5 @@
 //Use GreyHawk DnD campaign map as referance.
+//TODO: Make merchants
 'use strict';
 var Cmd = require('../src/commands').cmd,
 Room = require('../src/rooms').room,
@@ -9,7 +10,7 @@ module.exports = {
 	id: '4',
 	type: 'outside',
 	levels: 'All',
-	description: 'A vast landscape with infinite possiblities',
+	description: 'A vast cityscape with infinite possiblities',
 	reloads: 0,
 	author: 'Sam Bolton (Anorak)',
 	messages: [
@@ -21,11 +22,11 @@ module.exports = {
 			id: '1',
 			title: 'Greyhawk City main square',
 			area: 'Greyhawk City',
-			content: 'A busy hustling market square.',
+			content: 'A busy hustling market square. To the NORTH you can see a residential area.',
 			outdoors: true,
 			exits: [
 				{
-					cmd: 'down',
+					cmd: 'north',
 					id: '1',
 					area: 'Midgaard'
 				}
@@ -55,16 +56,16 @@ module.exports = {
 				ac: 20,
 				items: [],
 				trainer: true,
-				behaviors: [/*{
-					module: 'radghar'
-				}*/]
+				behaviors: [{
+					module: 'InfoBroker1'
+				}]
 			}],
 			items : [
 				{
 					name: 'Torch',
 					short: 'a wooden torch',
 					long: 'A wooden torch rests on the ground' ,
-					area: 'Midgaard',
+					area: 'Greyhawk_City',
 					id: '104',
 					level: 1,
 					itemType: 'weapon',
@@ -87,6 +88,24 @@ module.exports = {
 					beforeDrop: function(item, roomObj) {
 						return true;
 					}
+				}
+			]
+		},
+		{
+			id: '2',
+			title: 'Greyhawk City residential area',
+			area: 'Greyhawk City',
+			content: 'A calm area with some houses around.',
+			messages: [
+					{msg:"The sound of chatter and laughter can be heard from all the houses."}
+
+			],
+			outdoors: true,
+			exits: [
+				{
+					cmd: 'down',
+					id: '1',
+					area: 'Midgaard'
 				}
 			]
 		}

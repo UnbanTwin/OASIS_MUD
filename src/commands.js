@@ -1414,6 +1414,8 @@ Cmd.prototype.teleport = function(target, command,fn) {
 		});
 
 		Cmd.prototype.look(target,target.roomid);
+		Cmd.prototype.save(target);
+
 
 	}else if(World.getAreaByName(command.arg) && target.gold <= 30){
 		World.msgPlayer(target, {

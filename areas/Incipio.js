@@ -1,3 +1,5 @@
+//Note to anyone else working on this: Ignore most of the TODO's!
+
 //TODO: MAKE INCIPIO, IN PROGEESS - world building done.
 //TODO: Fix Radghar speaking randomly, temporal fix: comment out script.
 //TODO: Make mall. - DONE
@@ -27,7 +29,7 @@ module.exports = {
 			id: '1',
 			title: 'Incipio Central',
 			area: 'Incipio',
-			content: 'A lush plaza. To the NORTH you can see a shopping malls, to the EAST you can see some teleporters and to the NORTH you can see some skill mentors.',
+			content: 'A lush plaza. A statue of Bleed the unnacomplished is lying down here. To the NORTH you can see a shopping malls, to the EAST you can see some teleporters and to the NORTH you can see some skill mentors.',
 			outdoors: true,
 			exits: [
 				{
@@ -207,7 +209,7 @@ module.exports = {
 						return true;
 					}
 				}
-			},{
+			},/*{
 				id: '4',
 				title: 'Training grounds.',
 				area: 'Incipio',
@@ -245,13 +247,13 @@ module.exports = {
 					ac: 20,
 					items: [],
 					trainer: true,
-					behaviors: [/*{
+					behaviors: [{
 						module: 'HelpWizard'
-					}*/]
+					}
 				}
 
 			]
-		},
+		}*/,
 
 	]
 	//}]

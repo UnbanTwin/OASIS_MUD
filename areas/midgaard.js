@@ -148,7 +148,7 @@ module.exports = {
 				slot: 'hands',
 				equipped: false,
 				light: true,
-				lightDecay: 10,
+				lightDecay: 0,
 				flickerMsg: '',
 				extinguishMsg: '',
 				flags: [],

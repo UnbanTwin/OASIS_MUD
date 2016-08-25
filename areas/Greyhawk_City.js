@@ -80,7 +80,7 @@ module.exports = {
 					slot: 'hands',
 					equipped: false,
 					light: true,
-					lightDecay: 10,
+					lightDecay: 0,
 					flickerMsg: '',
 					extinguishMsg: '',
 					spawn: 3,
@@ -93,19 +93,37 @@ module.exports = {
 		},
 		{
 			id: '2',
-			title: 'Greyhawk City residential area',
+			title: 'Greyhawk City residential area.  ',
 			area: 'Greyhawk_City',
-			content: 'A calm area with some houses around.',
+			content: 'A calm area with some houses around. To the EAST you can see another lot of residential buildings.',
 			messages: [
-					{msg:"The sound of chatter and laughter can be heard from all the houses."}
+				{msg:"The sound of chatter and laughter can be heard from all the houses."}
 
 			],
 			outdoors: true,
 			exits: [
 				{
-					cmd: 'down',
-					id: '1',
-					area: 'Midgaard'
+					cmd: 'east',
+					id: '3',
+
+				}
+			]
+		}
+		{
+			id: '3',
+			title: 'Greyhawk City east residential area. ',
+			area: 'Greyhawk_City',
+			content: 'A calm area with some houses around. to the SOUTH you can see the inner walls.',
+			messages: [
+				{msg:"The sound of chatter and laughter can be heard from all the houses."}
+
+			],
+			outdoors: true,
+			exits: [
+				{
+					cmd: 'south',
+					id: '4',
+
 				}
 			]
 		}

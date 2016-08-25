@@ -94,7 +94,7 @@ module.exports = {
 		{
 			id: '2',
 			title: 'Greyhawk City residential area',
-			area: 'Greyhawk City',
+			area: 'Greyhawk_City',
 			content: 'A calm area with some houses around.',
 			messages: [
 					{msg:"The sound of chatter and laughter can be heard from all the houses."}

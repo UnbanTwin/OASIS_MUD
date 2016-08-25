@@ -27,8 +27,8 @@ module.exports = {
 			exits: [
 				{
 					cmd: 'north',
-					id: '1',
-					area: 'Midgaard'
+					id: '2',
+					area: 'Greyhawk_City'
 				}
 			],
 			monsters: [{

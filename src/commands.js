@@ -1396,13 +1396,40 @@ Cmd.prototype.worth = function(target, command) {
 	});
 };
 //For tranferring money from player to player, await MoreOutputs reply.
-/*Cmd.prototype.transfer = function(target, command, fn) {
+Cmd.prototype.transfer = function(target, command, fn) {
+	var player;
+	var executor;
 
-	World.msgPlayer(target, {
-		msg: 'You have ' + target.gold + ' ' + World.config.coinage,
-		styleClass: 'green'
-	});
-};*/
+	if(target.gold >= command.arg) {
+		player = World.getPlayerByName(command.input);
+		target.gold -= command.arg;
+		player.gold += command.arg;
+		World.msgPlayer(target, {
+			msg: 'You have have transfered ' + command.arg + ' ' + "credit(s) to "+command.input,
+			styleClass: 'green'
+		});
+		World.msgPlayer(player, {
+			msg: 'You have been sent ' + command.arg + ' ' + 'credit(s)',
+			styleClass: 'green'
+		});
+		Cmd.prototype.save(target);
+		Cmd.prototype.save(player);
+
+
+	}else if(target.gold < command.arg) {
+		World.msgPlayer(target, {
+			msg: 'You dont have that much gold.',
+			styleClass: 'error'
+		});
+	}else {
+		World.msgPlayer(target, {
+			msg: 'You cant see ' + command.input + 'here.',
+			styleClass: 'error'
+		});
+	};
+
+
+};
 Cmd.prototype.teleport = function(target, command,fn) {
 	if(World.getAreaByName(command.arg) && target.gold >= 30) {
 		target.area = command.arg;

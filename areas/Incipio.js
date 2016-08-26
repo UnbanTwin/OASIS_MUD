@@ -73,184 +73,214 @@ module.exports = {
 				behaviors: [{
 					module: 'HelpWizard'
 				}]
-			}]
+			},{
+				name: 'WALL-E',
+				displayName: 'WALL-E',
+				charClass: 'Engineer',
+				level: 35,
+				short: 'WALL-E',
+				long: '<span class="yellow">WALL-E</span>, a Waste Allocation Load Lifting Earth Class robot.',
+				description: 'a Waste Allocation Load Lifting Earth Class robot.',
+				inName: 'WALL-E',
+				race: 'Robot',
+				id: 1001,
+				area: 'Incipio',
+				weight: 195,
+				diceNum: 3,
+				diceSides: 10,
+				diceMod: 5,
+				str: 20,
+				dex: 18,
+				position: 'standing',
+				attackType: 'punch',
+				damRoll: 20,
+				hitRoll: 15,
+				ac: 20,
+				items: [],
+				trainer: false,
+				behaviors: [{
+					module: 'wander'
+				}]
 
-		},
-		{
-			id: '2',
-			title: 'Teleport Help Zone | Incipio',
-			area: 'Incipio',
-			content: 'A line of brass teleporters. Type TELEPORT DESTINATION to be transported to where you want go! ',
-			outdoors: true,
-			exits: [
-				{
-					cmd: 'west',
-					id: '1',
+			}
+		]
 
-				}
-			],
-			monsters: []
-		},{
-			id: '3',
-			title: 'Shopping Malls | Incipio',
-			area: 'Incipio',
-			content: 'A vast shopping mall. Type LIST to views stock and type BUY to buy any item that catches your eye. ',
-			outdoors: true,
-			exits: [
-				{
-					cmd: 'east',
-					id: '1',
+	},
+	{
+		id: '2',
+		title: 'Teleport Help Zone | Incipio',
+		area: 'Incipio',
+		content: 'A line of brass teleporters. Type TELEPORT DESTINATION to be transported to where you want go! ',
+		outdoors: true,
+		exits: [
+			{
+				cmd: 'west',
+				id: '1',
 
-				}
-			],
-			monsters: [
-				{
-					name: 'Mall Clerk',
-					level: 15,
-					short: 'human mall clerk',
-					long: 'A human mall clerk.',
-					description: '',
-					race: 'human',
-					id: '1002',
+			}
+		],
+		monsters: []
+	},{
+		id: '3',
+		title: 'Shopping Malls | Incipio',
+		area: 'Incipio',
+		content: 'A vast shopping mall. Type LIST to views stock and type BUY to buy any item that catches your eye. ',
+		outdoors: true,
+		exits: [
+			{
+				cmd: 'east',
+				id: '1',
+
+			}
+		],
+		monsters: [
+			{
+				name: 'Mall Clerk',
+				level: 15,
+				short: 'human mall clerk',
+				long: 'A human mall clerk.',
+				description: '',
+				race: 'human',
+				id: '1002',
+				area: 'Incipio',
+				weight: 200,
+				diceNum: 2,
+				diceSides: 8,
+				diceMod: 5,
+				str: 18,
+				gold: 1000,
+				position: 'standing',
+				attackType: 'punch',
+				damRoll: 10,
+				hitRoll: 10,
+				ac: 20,
+				merchant: true,
+				itemType: 'mob',
+				preventItemDecay: true,
+				items: [{
+					name: 'Rusted bronze short sword.',
+					short: 'a rusty short sword',
+					long: 'A rusty short sword was left here.' ,
 					area: 'Incipio',
-					weight: 200,
-					diceNum: 2,
-					diceSides: 8,
-					diceMod: 5,
-					str: 18,
-					gold: 1000,
-					position: 'standing',
-					attackType: 'punch',
-					damRoll: 10,
-					hitRoll: 10,
-					ac: 20,
-					merchant: true,
-					itemType: 'mob',
-					preventItemDecay: true,
-					items: [{
-						name: 'Rusted bronze short sword.',
-						short: 'a rusty short sword',
-						long: 'A rusty short sword was left here.' ,
-						area: 'Incipio',
-						id: '10001',
-						level: 1,
-						itemType: 'weapon',
-						weaponType: 'sword',
-						material: 'bronze',
-						diceNum: 1,
-						diceSides: 6,
-						diceMod: 0,
-						attackType: 'slash',
-						attackElement: '',
-						weight: 4,
-						worth: 10,
-						slot: 'hands',
-						equipped: false,
-						store: true,
-						spawn: 3,
-						modifiers: {
-							damRoll: 1
-						},
+					id: '10001',
+					level: 1,
+					itemType: 'weapon',
+					weaponType: 'sword',
+					material: 'bronze',
+					diceNum: 1,
+					diceSides: 6,
+					diceMod: 0,
+					attackType: 'slash',
+					attackElement: '',
+					weight: 4,
+					worth: 10,
+					slot: 'hands',
+					equipped: false,
+					store: true,
+					spawn: 3,
+					modifiers: {
+						damRoll: 1
+					},
 
 
 
-					},{
-						name: 'Rusty iron shield',
-						short: 'a small rusty iron shield',
-						long: 'A small basic looking rusty iron shield was left here.' ,
-						area: 'Incipio',
-						id: '10002',
-						level: 1,
-						itemType: 'shield',
-						material: 'iron',
-						ac: 2,
-						weight: 1,
-						slot: 'hands',
-						equipped: false,
-						worth:12,
-						store: true,
-						spawn: 6,
-						flags: []
-					},{
-						name: 'Leather Chestplate',
-						short: 'a leather chestplate',
-						long: 'A simple leather chestplate was left here' ,
-						area: 'Incipio',
-						id: '10003',
-						level: 1,
-						itemType: 'armor',
-						material: 'leather',
-						ac: 3,
-						weight: 1,
-						slot: 'body',
-						equipped: false,
-						store:true,
-						worth:15,
-						spawn:5,
-						flags: []
-					}],
+				},{
+					name: 'Rusty iron shield',
+					short: 'a small rusty iron shield',
+					long: 'A small basic looking rusty iron shield was left here.' ,
+					area: 'Incipio',
+					id: '10002',
+					level: 1,
+					itemType: 'shield',
+					material: 'iron',
+					ac: 2,
+					weight: 1,
+					slot: 'hands',
+					equipped: false,
+					worth:12,
+					store: true,
+					spawn: 6,
+					flags: []
+				},{
+					name: 'Leather Chestplate',
+					short: 'a leather chestplate',
+					long: 'A simple leather chestplate was left here' ,
+					area: 'Incipio',
+					id: '10003',
+					level: 1,
+					itemType: 'armor',
+					material: 'leather',
+					ac: 3,
+					weight: 1,
+					slot: 'body',
+					equipped: false,
+					store:true,
+					worth:15,
+					spawn:5,
 					flags: []
 				}],
-				behaviors: [],
-				beforeSell: function(merchant, roomObj, buyer) {
-					if (buyer.race === 'ogre') {
-						Cmd.say(merchant, {
-							msg: 'Sell to an Ogre? Are you insane?',
-							roomObj: roomObj
-						});
+				flags: []
+			}],
+			behaviors: [],
+			beforeSell: function(merchant, roomObj, buyer) {
+				if (buyer.race === 'ogre') {
+					Cmd.say(merchant, {
+						msg: 'Sell to an Ogre? Are you insane?',
+						roomObj: roomObj
+					});
 
-						return false;
-					} else {
-						return true;
-					}
+					return false;
+				} else {
+					return true;
 				}
-			}/*{
-				id: '4',
-				title: 'Training grounds.',
-				area: 'Incipio',
-				content: 'The mentors here can help you train your skills. ',
-				outdoors: true,
-				exits: [
-					{
-						cmd: 'south',
-						id: '1',
+			}
+		}/*{
+			id: '4',
+			title: 'Training grounds.',
+			area: 'Incipio',
+			content: 'The mentors here can help you train your skills. ',
+			outdoors: true,
+			exits: [
+			{
+			cmd: 'south',
+			id: '1',
 
-					}
-				],
-				monsters: [{
-					name: 'MageTrainer',
-					displayName: 'Mage Trainer',
-					charClass: 'mage',
-					level: 35,
-					short: 'Mage Trainer',
-					long: '<span class="yellow">Mage Trainer</span>, a old wise loooking wizard',
-					description: 'A old wise loooking wizard.',
-					inName: 'Mage Trainer',
-					race: 'elf',
-					id: 1001,
-					area: 'Incipio',
-					weight: 195,
-					diceNum: 3,
-					diceSides: 10,
-					diceMod: 5,
-					str: 20,
-					dex: 18,
-					position: 'standing',
-					attackType: 'punch',
-					damRoll: 20,
-					hitRoll: 15,
-					ac: 20,
-					items: [],
-					trainer: true,
-					behaviors: [{
-						module: 'HelpWizard'
-					}
-				}
+		}
+	],
+	monsters: [{
+	name: 'MageTrainer',
+	displayName: 'Mage Trainer',
+	charClass: 'mage',
+	level: 35,
+	short: 'Mage Trainer',
+	long: '<span class="yellow">Mage Trainer</span>, a old wise loooking wizard',
+	description: 'A old wise loooking wizard.',
+	inName: 'Mage Trainer',
+	race: 'elf',
+	id: 1001,
+	area: 'Incipio',
+	weight: 195,
+	diceNum: 3,
+	diceSides: 10,
+	diceMod: 5,
+	str: 20,
+	dex: 18,
+	position: 'standing',
+	attackType: 'punch',
+	damRoll: 20,
+	hitRoll: 15,
+	ac: 20,
+	items: [],
+	trainer: true,
+	behaviors: [{
+	module: 'HelpWizard'
+}
+}
 
-			]
-		}*/,
+]
+}*/,
 
-	]
-	//}]
+]
+//}]
 
 }

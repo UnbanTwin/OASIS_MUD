@@ -1,0 +1,10 @@
+{
+	"name": "Android",
+	"int": 8,
+	"con": -4,
+	"playable": true,
+	"attackType": "punch",
+	"diceNum": 1,
+	"diceSides": 4,
+	"affects": []
+}

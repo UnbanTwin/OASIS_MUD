@@ -1,4 +1,4 @@
-//Note to anyone else working on this: Ignore most of the TODO's!
+//Note to anyone else working on this: Ignore most of the TODO's! (I cant remember whats has been done and what hasnt, refer to the slack. )
 
 //TODO: MAKE INCIPIO, IN PROGEESS - world building done.
 //TODO: Fix Radghar speaking randomly, temporal fix: comment out script.
@@ -27,9 +27,9 @@ module.exports = {
 	rooms: [
 		{
 			id: '1',
-			title: 'Incipio Central',
+			title: 'Welcome Center | Incipio',
 			area: 'Incipio',
-			content: 'A lush plaza. A statue of Bleed the unnacomplished is lying down here. To the NORTH you can see a shopping malls, to the EAST you can see some teleporters and to the NORTH you can see some skill mentors.',
+			content: 'Its a great day on Incipio, the most accessible place in OASIS! A statue of Bleed the unnacomplished is lying down here. To the NORTH you can see some shopping malls, to the EAST you can see some teleporters.',
 			outdoors: true,
 			exits: [
 				{
@@ -42,13 +42,8 @@ module.exports = {
 					id: '3',
 
 
-				},
-				{
-					cmd: 'north',
-					id: '4',
-
-
 				}
+
 			],
 			monsters: [{
 				name: 'HelpWizard',
@@ -83,7 +78,7 @@ module.exports = {
 		},
 		{
 			id: '2',
-			title: 'Incipio Teleporters',
+			title: 'Teleport Help Zone | Incipio',
 			area: 'Incipio',
 			content: 'A line of brass teleporters. Type TELEPORT DESTINATION to be transported to where you want go! ',
 			outdoors: true,
@@ -97,7 +92,7 @@ module.exports = {
 			monsters: []
 		},{
 			id: '3',
-			title: 'Shopping Malls',
+			title: 'Shopping Malls | Incipio',
 			area: 'Incipio',
 			content: 'A vast shopping mall. Type LIST to views stock and type BUY to buy any item that catches your eye. ',
 			outdoors: true,
@@ -209,7 +204,7 @@ module.exports = {
 						return true;
 					}
 				}
-			},/*{
+			}/*{
 				id: '4',
 				title: 'Training grounds.',
 				area: 'Incipio',

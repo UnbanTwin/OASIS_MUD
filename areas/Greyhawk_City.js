@@ -20,7 +20,7 @@ module.exports = {
 	rooms: [
 		{
 			id: '1',
-			title: 'Greyhawk City main square',
+			title: 'Main Square | Greyhawk City',
 			area: 'Greyhawk City',
 			content: 'A busy hustling market square. To the NORTH you can see a residential area.',
 			outdoors: true,
@@ -93,7 +93,7 @@ module.exports = {
 		},
 		{
 			id: '2',
-			title: 'Greyhawk City residential area.  ',
+			title: 'Residential Area | Greyhawk City',
 			area: 'Greyhawk_City',
 			content: 'A calm area with some houses around. To the EAST you can see another lot of residential buildings.',
 			messages: [
@@ -108,10 +108,10 @@ module.exports = {
 
 				}
 			]
-		}
+		},
 		{
 			id: '3',
-			title: 'Greyhawk City east residential area. ',
+			title: 'East Residential Area | Greyhawk City  ',
 			area: 'Greyhawk_City',
 			content: 'A calm area with some houses around. to the SOUTH you can see the inner walls.',
 			messages: [
@@ -120,11 +120,11 @@ module.exports = {
 			],
 			outdoors: true,
 			exits: [
-				{
+				/*{
 					cmd: 'south',
 					id: '4',
 
-				}
+				}*/
 			]
 		}
 	]

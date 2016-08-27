@@ -38,7 +38,7 @@ module.exports = {
 
 				},
 				{
-					cmd: 'west',
+					cmd: 'north',
 					id: '3',
 
 

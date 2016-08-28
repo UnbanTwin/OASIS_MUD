@@ -1487,9 +1487,13 @@ Cmd.prototype.look = function(target, command) {
 						styleClass: 'room'
 					});
 				} else {
+					displayHTML = Room.getDisplayHTML(roomObj, {
+						hideCallingPlayer: target.name
+					});
+
 					World.msgPlayer(target, {
-						msg: 'It is too dark to see anything!',
-						styleClass: 'error'
+						msg: displayHTML,
+						styleClass: 'room'
 					});
 				}
 			} else {

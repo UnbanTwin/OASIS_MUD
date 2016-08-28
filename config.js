@@ -1,10 +1,10 @@
 exports.server = {
 	game: {
 		port: 3000,
-		name: 'RockMUD',
+		name: 'The OASIS',
 		version: '0.3.0',
 		website: 'https://github.com/MoreOutput/RockMUD',
-		description: 'Websockets MUD Engine Demo',
+		description: 'The OASIS',
 		coinage: 'credit(s)'
 	},
 	admins: ["Anorak"]

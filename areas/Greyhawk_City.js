@@ -95,7 +95,7 @@ module.exports = {
 			id: '2',
 			title: 'Residential Area | Greyhawk City',
 			area: 'Greyhawk_City',
-			content: 'A calm area with some houses around. To the EAST you can see another lot of residential buildings.',
+			content: 'A calm area with some houses around. To the EAST you can see another lot of residential buildings. To the NORTH you can see the main square.',
 			messages: [
 				{msg:"The sound of chatter and laughter can be heard from all the houses."}
 
@@ -106,25 +106,51 @@ module.exports = {
 					cmd: 'east',
 					id: '3',
 
+				},
+				{
+					cmd: 'north',
+					id:'1',
 				}
+
 			]
 		},
 		{
 			id: '3',
 			title: 'East Residential Area | Greyhawk City  ',
 			area: 'Greyhawk_City',
-			content: 'A calm area with some houses around. to the SOUTH you can see the inner walls.',
+			content: 'A calm area with some houses around. to the SOUTH you can see the inner walls. To the WEST you can see the main residential area.',
 			messages: [
 				{msg:"The sound of chatter and laughter can be heard from all the houses."}
 
 			],
 			outdoors: true,
 			exits: [
-				/*{
+				{
 					cmd: 'south',
 					id: '4',
 
-				}*/
+				},
+				{
+					cmd: 'west',
+					id: '2',
+				}
+			]
+		},{
+			id: '4',
+			title: 'Outer Walls | Greyhawk City  ',
+			area: 'Greyhawk_City',
+			content: 'The inner walls. to the SOUTH you can see the outer walls. To the WEST you can see a guard tower. To the NORTH you can see the east residential area',
+			messages: [
+				{msg:"You can just about feel the wind blowing on your face."}
+
+			],
+			outdoors: true,
+			exits: [
+				{
+					cmd: 'north',
+					id: '3',
+
+				}
 			]
 		}
 	]

@@ -137,9 +137,9 @@ module.exports = {
 			]
 		},{
 			id: '4',
-			title: 'Outer Walls | Greyhawk City  ',
+			title: 'Inner Walls | Greyhawk City  ',
 			area: 'Greyhawk_City',
-			content: 'The inner walls. to the SOUTH you can see the outer walls. To the WEST you can see a guard tower. To the NORTH you can see the east residential area',
+			content: 'The inner walls. To the SOUTH you can see the outer walls. To the WEST you can see a guard tower. To the NORTH you can see the east residential area',
 			messages: [
 				{msg:"You can just about feel the wind blowing on your face."}
 
@@ -150,6 +150,44 @@ module.exports = {
 					cmd: 'north',
 					id: '3',
 
+				},
+				{
+					cmd: 'west',
+					id: '5',
+
+				}
+			]
+		},{
+			id: '5',
+			title: 'East Guard Tower | Greyhawk City  ',
+			area: 'Greyhawk_City',
+			content: 'It is a dark room, with playing cards left out on the table. It looks like this place has been abandoned quite hastily. To the EAST you see the inner walls.',
+			messages: [
+				{msg:"You can just about feel the wind blowing on your face."}
+
+			],
+			outdoors: true,
+			exits: [
+				{
+					cmd: 'east',
+					id: '4',
+
+				}
+			],
+			items: [
+				{
+					name: 'Note',
+					short: 'Meet me at the deep flame tavern, use this note to unlock the door.',
+					long: 'A small note is on the floor here' ,
+					area: 'Greyhawk_City',
+					id: '1021',
+					level: 1,
+					itemType: 'key',
+					material: 'paper',
+					weight: 1,
+					equipped: false,
+					isKey: true,
+					flags: []
 				}
 			]
 		}

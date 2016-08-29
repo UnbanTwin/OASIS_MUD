@@ -1,5 +1,5 @@
 {
-	"name": "", 
+	"name": "",
 	"short": "",
 	"long": "" ,
 	"displayName": "",
@@ -7,13 +7,13 @@
 	"area": "",
 	"id": "",
 	"refId": "",
-	"level": 1,
-	"itemType": "item",
-	"material": "", 
+	"level": 0,
+	"itemType": "",
+	"material": "",
 	"diceNum": 0,
 	"diceSides": 0,
 	"diceMod": 0,
-	"attackType": "", 
+	"attackType": "",
 	"attackElement": "",
 	"weight": 0,
 	"value": 0,
@@ -30,4 +30,3 @@
 	"modifiers": {},
 	"hasEvents": false
 }
-

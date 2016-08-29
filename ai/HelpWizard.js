@@ -14,10 +14,10 @@ module.exports = {
 	],
 	currentlyEnrolled: [],
 	onSay: function(mob, roomObj, player, command) {
-		if (player.isPlayer) {
+		if (player.isPlayer && command) {
 			if (command.msg.toLowerCase().indexOf('yes') !== -1) {
 				Cmd.say(mob, {
-					msg: 'Great! Let me get you signed up. Just a second...',
+					msg: 'Thats great to hear ' + player.displayName  +  '! Let me get you signed up. Just a second...',
 					roomObj: roomObj
 				});
 			}

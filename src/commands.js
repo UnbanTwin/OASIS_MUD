@@ -1413,7 +1413,7 @@ Cmd.prototype.transfer = function(target, command, fn) {
 			styleClass: 'green'
 		});
 		Cmd.prototype.save(target);
-		Cmd.prototype.save(player);
+		Cmd.prototype.save
 
 
 	}else if(target.gold < command.arg) {
@@ -1430,21 +1430,38 @@ Cmd.prototype.transfer = function(target, command, fn) {
 
 
 };
-Cmd.prototype.teleport = function(target, command,fn) {
-	if(World.getAreaByName(command.arg) && target.gold >= 30) {
-		target.area = command.arg;
-		target.roomid = '1';
+Cmd.prototype.teleport = function(target, command) {
+	var area = World.getAreaByName(command.arg),
+	targetRoom, // room we're teleporting to
+	roomObj; // room we're in
+	if (area && target.gold >= 30) {
+		roomObj = command.roomObj;
+		targetRoom = targetRoom = World.getRoomObject(area.name, '1');
+
+		target.area = area.name;
+		target.roomid = targetRoom.id;
 		target.gold -= 30;
+
+		if (target.isPlayer) {
+			this.look(target);
+
+			Room.removePlayer(roomObj, target);
+
+			targetRoom.playersInRoom.push(target);
+
+			this.save(target);
+			this.look(target, target.roomid);
+		} else {
+			Room.removeMob(roomObj, target);
+
+			targetRoom.monsters.push(target);
+		}
+
 		World.msgPlayer(target, {
 			msg: 'You have been teleported to ' + command.arg + '. 30 credit(s) have been subtracted from your account.',
 			styleClass: 'green'
 		});
-
-		Cmd.prototype.look(target,target.roomid);
-		Cmd.prototype.save(target);
-
-
-	}else if(World.getAreaByName(command.arg) && target.gold <= 30){
+	} else if (area && target.gold <= 30){
 		World.msgPlayer(target, {
 			msg: 'You do not have enough credit(s) to teleport, you need 30!',
 			styleClass: 'green'
@@ -1487,13 +1504,9 @@ Cmd.prototype.look = function(target, command) {
 						styleClass: 'room'
 					});
 				} else {
-					displayHTML = Room.getDisplayHTML(roomObj, {
-						hideCallingPlayer: target.name
-					});
-
 					World.msgPlayer(target, {
-						msg: displayHTML,
-						styleClass: 'room'
+						msg: 'It is too dark to see anything!',
+						styleClass: 'error'
 					});
 				}
 			} else {
@@ -1599,8 +1612,8 @@ Cmd.prototype.say = function(target, command) {
 					var msg;
 
 					if (Character.canSee(receiver, roomObj)) {
-						msg = '<div class="cmd-say"><span class="msg-name">' +
-						target.displayName + ' says></span> ' + command.msg + '</div>';
+						msg = '<div class="cmd-say"><span class="msg-name">'
+							+ target.displayName + ' says></span> ' + command.msg + '</div>';
 					} else {
 						msg = '<div class="cmd-say"><span class="msg-name">Someone says></span> ' + command.msg + '</div>';
 					}
@@ -1610,19 +1623,9 @@ Cmd.prototype.say = function(target, command) {
 				playerName: target.name
 			});
 
-			if (target.onSay) {
-				target.onSay(target, roomObj, command);
-			}
-
-			if (roomObj.onSay) {
-				roomObj.onSay(target, roomObj, command);
-			}
-
-			for (i; i < roomObj.monsters.length; i += 1) {
-				if (roomObj.monsters[i].onSay) {
-					roomObj.monsters[i].onSay(target, roomObj, command);
-				}
-			}
+			World.processEvents('onSay', target, roomObj, command);
+			World.processEvents('onSay', roomObj, target, command);
+			World.processEvents('onSay', roomObj.monsters, roomObj, target, command);
 		} else {
 			World.msgPlayer(target, {
 				msg: 'You have nothing to say.',
@@ -1636,7 +1639,6 @@ Cmd.prototype.say = function(target, command) {
 		});
 	}
 };
-
 Cmd.prototype.yell = function(target, command) {
 	if (command.msg !== '') {
 		World.msgPlayer(target, {
@@ -1820,7 +1822,7 @@ Cmd.prototype.train = function(target, command) {
 	stats = World.getGameStatArr(),
 	canSee = Character.canSee(target, roomObj);
 
-	if (target.position !== 'sleeping') {
+	if (target.position !== 'sleeping' && target.position !== 'fighting') {
 		if (canSee) {
 			if (trainers.length) {
 				trainer = trainers[0];
@@ -1856,7 +1858,6 @@ Cmd.prototype.train = function(target, command) {
 								cost += 3;
 							}
 
-
 							if (stat === target.mainStat) {
 								cost -= 1;
 							}
@@ -1873,21 +1874,21 @@ Cmd.prototype.train = function(target, command) {
 
 									World.msgPlayer(target, {
 										msg: 'You train with ' + trainer.displayName
-										+ '. (<strong>' + World.capitalizeFirstLetter(stat)
-										+ ' +1 for ' + cost +  ' trains</strong>)',
+											+ '. (<strong>' + World.capitalizeFirstLetter(stat)
+											+ ' +1 for ' + cost +  ' trains</strong>)',
 										styleClass: 'green'
 									});
 								} else {
 									World.msgPlayer(target, {
 										msg: 'You don\'t have enough trains to work with '
-										+ trainer.displayName + '.',
+											+ trainer.displayName + '.',
 										styleClass: 'error'
 									});
 								}
 							} else {
 								World.msgPlayer(target, {
 									msg: 'You already know much more than ' + trainer.displayName
-									+ '. You should find someone stronger to train with.',
+										+ '. You should find someone stronger to train with.',
 									styleClass: 'error'
 								});
 							}
@@ -1900,12 +1901,12 @@ Cmd.prototype.train = function(target, command) {
 					}
 				} else {
 					trainDisplay = '<p>You can train the follow stats with ' + trainer.displayName
-					+ '. <strong>You currently have ' + target.trains
-					+ ' Trains to spend</strong>.</p><table class="table table-condensed train-table">'
-					+ '<thead><tr><td class="train-name-header yellow"><strong>Stat</strong></td>'
-					+ '<td class="train-cost-header yellow"><strong>Current Value</strong></td>'
-					+ '<td class="train-cost-header yellow"><strong>Cost</strong></td>'
-					+ '</tr></thead><tbody>';
+						+ '. <strong>You currently have ' + target.trains
+						+ ' Trains to spend</strong>.</p><table class="table table-condensed train-table">'
+						+ '<thead><tr><td class="train-name-header yellow"><strong>Stat</strong></td>'
+						+ '<td class="train-cost-header yellow"><strong>Current Value</strong></td>'
+						+ '<td class="train-cost-header yellow"><strong>Cost</strong></td>'
+						+ '</tr></thead><tbody>';
 
 					for (i; i < stats.length; i += 1) {
 						if (target['base' + World.capitalizeFirstLetter(stats[i].id)] < 12) {
